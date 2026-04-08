@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 220 30% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 30% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 30% 12%;
+
+    --primary: 160 60% 35%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 215 70% 45%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 20% 94%;
+    --muted-foreground: 220 10% 45%;
+
+    --accent: 45 90% 55%;
+    --accent-foreground: 220 30% 12%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 210 20% 88%;
+    --input: 210 20% 88%;
+    --ring: 160 60% 35%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --zellige-green: 160 60% 35%;
+    --zellige-blue: 215 70% 45%;
+    --zellige-yellow: 45 90% 55%;
+    --zellige-dark: 220 40% 13%;
+    --zellige-white: 0 0% 100%;
+    --zellige-light: 210 20% 96%;
+
+    --gradient-hero: linear-gradient(135deg, hsl(220 40% 13%) 0%, hsl(215 70% 25%) 50%, hsl(160 60% 20%) 100%);
+    --gradient-zellige: linear-gradient(135deg, hsl(160 60% 35%), hsl(215 70% 45%));
+    --gradient-accent: linear-gradient(135deg, hsl(45 90% 55%), hsl(45 90% 65%));
+
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+  .maplibregl-popup-content {
+    @apply bg-transparent! shadow-none! p-0! rounded-none!;
+  }
+  .maplibregl-popup-tip {
+    @apply hidden!;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+/* Zellige pattern overlay */
+.zellige-pattern {
+  background-image: url('/images/zellige-pattern.jpg');
+  background-size: 200px;
+  background-repeat: repeat;
+  opacity: 0.06;
+}
+
+/* Earth rotation */
+@keyframes earth-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-earth-rotate {
+  animation: earth-rotate 30s linear infinite;
+}
+
+/* Float animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Pulse glow */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px hsl(45 90% 55% / 0.3); }
+  50% { box-shadow: 0 0 40px hsl(45 90% 55% / 0.6); }
+}
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Zellige border */
+.zellige-border {
+  border-image: repeating-linear-gradient(
+    45deg,
+    hsl(160 60% 35%),
+    hsl(215 70% 45%) 10px,
+    hsl(45 90% 55%) 20px,
+    hsl(160 60% 35%) 30px
+  ) 4;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--zellige-light));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--zellige-green));
+  border-radius: 4px;
+}

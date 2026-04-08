@@ -127,7 +127,8 @@ const HeroSection = () => {
     transition={{ duration: 4, repeat: Infinity, repeatType: "loop", ease: "easeInOut" }}
   /> */}
    <div className="w-full lg:w-1/2 text-left pl-8">
-  <FloatingImages />
+   <div  className="hidden lg:block">
+  <FloatingImages /></div>
 </div>
   </div>
 </section>

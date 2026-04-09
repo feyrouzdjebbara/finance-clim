@@ -36,11 +36,11 @@ const PMSection = () => {
             <div className="flex-1 relative">
               <Quote className="absolute top-0 left-0 w-10 h-10 text-zellige-green/20" />
 
-              <blockquote className="text-lg pl-12 md:text-xl text-foreground/80 font-body leading-relaxed italic pl-8">
+              <blockquote className="text-lg pl-14 md:text-xl text-foreground/80 font-body leading-relaxed italic pl-8">
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
               </blockquote>
 
-              <div className="mt-6 pl-8">
+              <div className="mt-6 pl-8 pl-14">
                 <div className="w-16 h-0.5 bg-zellige-yellow mb-3" />
                 <p className="font-display font-semibold text-foreground">
                   Le Premier Ministre

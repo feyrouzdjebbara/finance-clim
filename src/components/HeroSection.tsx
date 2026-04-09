@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { HashLink } from "react-router-hash-link"; // ✅ Import HashLink
 import FloatingImages from "./FloatImages";
 
 const TypeWriterText = () => {
@@ -40,7 +41,7 @@ const HeroSection = () => {
         style={{ backgroundImage: "url('/images/background.png')" }}
       />
 
-      {/* Content Container */}
+      {/* Content */}
       <div className="relative z-10 flex flex-col lg:flex-row items-start px-8 max-w-7xl w-full gap-16">
         {/* Left Text */}
         <div className="w-full lg:w-1/2 text-left pl-8">
@@ -83,20 +84,22 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            {/* Use hash-only to avoid 404 on static hosting */}
-            <a
-              href="#inscription"
+            <HashLink
+              smooth
+              to="/evenement#inscription"
               className="px-8 py-4 rounded-lg font-body font-semibold text-accent-foreground transition-all hover:scale-105"
               style={{ background: "var(--gradient-accent)" }}
             >
               S'inscrire au Workshop
-            </a>
-            <a
-              href="#programme"
+            </HashLink>
+
+            <HashLink
+              smooth
+              to="/evenement#programme"
               className="px-8 py-4 rounded-lg font-body font-semibold border border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 transition-all"
             >
               Voir le Programme
-            </a>
+            </HashLink>
           </motion.div>
         </div>
 

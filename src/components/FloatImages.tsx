@@ -9,12 +9,12 @@ const floatingElements = Array.from({ length: 12 });
 const FloatingImages = () => {
   const [current, setCurrent] = useState(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % images.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCurrent((prev) => (prev + 1) % images.length);
+  //   }, 4000);
+  //   return () => clearInterval(interval);
+  // }, []);
 
   return (
     <div className="w-full flex justify-center items-center relative overflow-hidden">
@@ -56,9 +56,12 @@ const FloatingImages = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{
             opacity: 1,
-            scale: 1,
-            y: [-10, 10, -10],
-            rotate: [0, 180, 180, 0],
+    scale: 1,
+    y: [-10, 10, -10], // keep floating effect
+            // opacity: 1,
+            // scale: 1,
+            // y: [-10, 10, -10],
+            // rotate: [0, 180, 180, 0],
           }}
           exit={{ opacity: 0 }}
           transition={{

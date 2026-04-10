@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Sun, Wind, Droplets, Factory, Leaf, Mountain, Zap, TreePine } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
-
+import { HashLink } from "react-router-hash-link";
 const categories = [
   {
     title: "Énergies Renouvelables",
@@ -46,6 +46,11 @@ const tagColors: Record<string, string> = {
   Agriculture: "bg-zellige-green/20 text-zellige-green border-zellige-green/30",
   CCS: "bg-muted text-muted-foreground border-border",
 };
+  const ids = [
+    "energies-renouvelables",
+    "barrages-hydrauliques",
+    "reduction-carbone",
+  ];
 
 const Projects = () => {
   return (
@@ -74,56 +79,102 @@ const Projects = () => {
       </section>
 
       {/* Project sections */}
-      {categories.map((cat, catIdx) => (
-        <section
-          key={catIdx}
-          className={`py-20 px-4 ${catIdx % 2 === 0 ? "bg-background" : "bg-muted/50"} relative`}
+
+
+   {
+   
+   categories.map((cat, catIdx) => {
+  // const ids = [
+  //   "energies-renouvelables",
+  //   "barrages-hydrauliques",
+  //   "reduction-carbone",
+  // ];
+
+  return (
+    <section
+      key={catIdx}
+      id={ids[catIdx]}   // ✅ IMPORTANT
+      className={`py-20 px-4 ${
+        catIdx % 2 === 0 ? "bg-background" : "bg-muted/50"
+      } relative`}
+    >
+      <div className="container max-w-6xl mx-auto relative z-10">
+        
+        {/* Title */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-12"
         >
-          <div className="container max-w-6xl mx-auto relative z-10">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-3">
+            {cat.title}
+          </h2>
+
+          <div
+            className="w-24 h-1 rounded-full mb-4"
+            style={{ background: "var(--gradient-zellige)" }}
+          />
+
+          <p className="text-muted-foreground font-body max-w-3xl">
+            {cat.description}
+          </p>
+        </motion.div>
+
+        {/* Projects grid */}
+        <div className="grid md:grid-cols-2 gap-6">
+          {cat.projects.map((project, i) => (
             <motion.div
+              key={i}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mb-12"
+              transition={{ delay: i * 0.1 }}
+              whileHover={{ y: -4 }}
+              className="bg-card rounded-xl p-6 border border-border shadow-sm hover:shadow-lg transition-all group"
             >
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-3">{cat.title}</h2>
-              <div className="w-24 h-1 rounded-full mb-4" style={{ background: "var(--gradient-zellige)" }} />
-              <p className="text-muted-foreground font-body max-w-3xl">{cat.description}</p>
-            </motion.div>
+              <div className="flex items-start gap-4">
 
-            <div className="grid md:grid-cols-2 gap-6">
-              {cat.projects.map((project, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  whileHover={{ y: -4 }}
-                  className="bg-card rounded-xl p-6 border border-border shadow-sm hover:shadow-lg transition-all group"
+                <div
+                  className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform"
+                  style={{ background: "var(--gradient-zellige)" }}
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform"
-                      style={{ background: "var(--gradient-zellige)" }}>
-                      <project.icon className="w-6 h-6 text-primary-foreground" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-2 flex-wrap">
-                        <span className={`text-xs px-2 py-0.5 rounded-full border font-body font-medium ${tagColors[project.tag] || ""}`}>
-                          {project.tag}
-                        </span>
-                        <span className="text-xs text-muted-foreground font-body">📍 {project.location}</span>
-                      </div>
-                      <h3 className="text-lg font-display font-semibold text-foreground mb-2">{project.title}</h3>
-                      <p className="text-sm text-muted-foreground font-body leading-relaxed">{project.desc}</p>
-                    </div>
+                  <project.icon className="w-6 h-6 text-primary-foreground" />
+                </div>
+
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-2 flex-wrap">
+                    <span
+                      className={`text-xs px-2 py-0.5 rounded-full border font-body font-medium ${
+                        tagColors[project.tag] || ""
+                      }`}
+                    >
+                      {project.tag}
+                    </span>
+
+                    <span className="text-xs text-muted-foreground font-body">
+                      📍 {project.location}
+                    </span>
                   </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-      ))}
+
+                  <h3 className="text-lg font-display font-semibold text-foreground mb-2">
+                    {project.title}
+                  </h3>
+
+                  <p className="text-sm text-muted-foreground font-body leading-relaxed">
+                    {project.desc}
+                  </p>
+                </div>
+
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
+})}
     </PageLayout>
   );
 };

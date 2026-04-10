@@ -80,54 +80,88 @@ const FinancialActors = () => {
       </section>
 
       {/* Categories */}
-      {categories.map((cat, catIdx) => (
-        <section
-          key={catIdx}
-          className={`py-20 px-4 ${catIdx % 2 === 0 ? "bg-background" : "bg-muted/50"} relative`}
+    {categories.map((cat, catIdx) => {
+  const ids = [
+    "banques",
+    "fonds",
+    "institutions",
+    "organismes",
+  ];
+
+  return (
+    <section
+      key={catIdx}
+      id={ids[catIdx]}   // ✅ HERE IS THE IMPORTANT PART
+      className={`py-20 px-4 ${
+        catIdx % 2 === 0 ? "bg-background" : "bg-muted/50"
+      } relative`}
+    >
+      {catIdx % 2 !== 0 && (
+        <div className="absolute inset-0 zellige-pattern pointer-events-none" />
+      )}
+
+      <div className="container max-w-6xl mx-auto relative z-10">
+        
+        {/* Title */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex items-center gap-4 mb-10"
         >
-          {catIdx % 2 !== 0 && <div className="absolute inset-0 zellige-pattern pointer-events-none" />}
-          <div className="container max-w-6xl mx-auto relative z-10">
+          <div
+            className={`w-14 h-14 rounded-xl bg-gradient-to-br ${gradients[catIdx]} flex items-center justify-center`}
+          >
+            <cat.icon className="w-7 h-7 text-primary-foreground" />
+          </div>
+
+          <div>
+            <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground">
+              {cat.title}
+            </h2>
+            <div
+              className="w-20 h-1 rounded-full mt-2"
+              style={{ background: "var(--gradient-zellige)" }}
+            />
+          </div>
+        </motion.div>
+
+        {/* Cards */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {cat.actors.map((actor, i) => (
             <motion.div
+              key={i}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="flex items-center gap-4 mb-10"
+              transition={{ delay: i * 0.1 }}
+              whileHover={{ y: -6, scale: 1.02 }}
+              className="bg-card rounded-xl p-6 border border-border shadow-sm hover:shadow-xl transition-all group text-center"
             >
-              <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${gradients[catIdx]} flex items-center justify-center`}>
-                <cat.icon className="w-7 h-7 text-primary-foreground" />
+              <div className="w-16 h-16 rounded-full mx-auto mb-4 bg-white flex items-center justify-center overflow-hidden group-hover:scale-110 transition-transform shadow">
+                <img
+                  src={actor.image}
+                  alt={actor.name}
+                  className="w-10 h-10 object-contain"
+                />
               </div>
-              <div>
-                <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground">{cat.title}</h2>
-                <div className="w-20 h-1 rounded-full mt-2" style={{ background: "var(--gradient-zellige)" }} />
-              </div>
-            </motion.div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {cat.actors.map((actor, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  whileHover={{ y: -6, scale: 1.02 }}
-                  className="bg-card rounded-xl p-6 border border-border shadow-sm hover:shadow-xl transition-all group text-center"
-                >
-                  <div className={`w-16 h-16 rounded-full mx-auto mb-4 bg-white flex items-center justify-center overflow-hidden group-hover:scale-110 transition-transform shadow`}>
-  <img
-    src={actor.image}
-    alt={actor.name}
-    className="w-10 h-10 object-contain"
-  />
-</div>
-                  <h3 className="font-display font-semibold text-foreground text-sm mb-2">{actor.name}</h3>
-                  <p className="text-xs text-muted-foreground font-body leading-relaxed">{actor.role}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-      ))}
+              <h3 className="font-display font-semibold text-foreground text-sm mb-2">
+                {actor.name}
+              </h3>
+
+              <p className="text-xs text-muted-foreground font-body leading-relaxed">
+                {actor.role}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+})}
+
+
     </PageLayout>
   );
 };

@@ -2,15 +2,48 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Leaf } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-
+import { HashLink } from "react-router-hash-link";
 const links = [
-  { href: "/", label: "Accueil" },
-  // { href: "/finance-climatique", label: "Finance Climatique" },
-  { href: "/acteurs-financiers", label: "Acteurs Financiers" },
-  { href: "/projets", label: "Projets" },
-  { href: "/evenement", label: "Événement" },
-  // { href: "/contexte-algerie", label: "Contexte Algérie" },
-  { href: "/contact", label: "Contact / FAQ" },
+  {
+    label: "Accueil",
+    submenu: [
+      { href: "/#message-pm", label: "Message du Premier Ministre" },
+      { href: "/#finance-climatique", label: "Présentation de la finance climatique" },
+      { href: "/#contexte-algerie", label: "Contexte Algérien" },
+    ],
+  },
+  {
+    label: "Acteurs Financiers",
+    submenu: [
+      { href: "/acteurs-financiers#banques", label: "Banques de développement" },
+      { href: "/acteurs-financiers#fonds", label: "Fonds climatiques et subventions" },
+      { href: "/acteurs-financiers#institutions", label: "Institutions Financières Nationales" },
+      { href: "/acteurs-financiers#organismes", label: "Organismes & Agences" },
+    ],
+  },
+  {
+    label: "Projets",
+   submenu: [
+  { href: "/projets#energies-renouvelables", label: "Énergies renouvelables" },
+  { href: "/projets#barrages-hydrauliques", label: "Barrages et infrastructures" },
+  { href: "/projets#reduction-carbone", label: "Réduction d’émissions carbone" },
+],
+  },
+  {
+    label: "Événement",
+    submenu: [
+      { href: "/evenement#objectif", label: "Objectif du workshop" },
+      { href: "/evenement#programme", label: "Programme détaillé" },
+      { href: "/evenement#inscription", label: "Formulaire d’inscription" },
+    ],
+  },
+  {
+    label: "Contact / FAQ",
+    submenu: [
+      { href: "/contact#formulaire", label: "Formulaire de contact" },
+      { href: "/contact#faq", label: "FAQ" },
+    ],
+  },
 ];
 
 const Navbar = () => {
@@ -43,29 +76,42 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop links */}
-        <div className="hidden lg:flex items-center gap-1">
-          {links.map((l) => (
-            <Link
-              key={l.href}
-              to={l.href}
-              className={`px-3 py-2 rounded-lg text-sm font-body font-medium transition-colors ${
-                location.pathname === l.href
-                  ? "text-zellige-green bg-zellige-green/10"
-                  : "text-primary-foreground/70 hover:text-zellige-green hover:bg-zellige-green/5"
-              }`}
-            >
-              {l.label}
-            </Link>
-          ))}
-          <Link
-            to="/evenement#inscription"
-            className="ml-2 px-5 py-2 rounded-lg text-sm font-body font-semibold text-accent-foreground transition-all hover:scale-105"
-            style={{ background: "var(--gradient-accent)" }}
-          >
-            S'inscrire
-          </Link>
-        </div>
+    <div className="hidden lg:flex items-center gap-1">
+  {links.map((menu, i) => (
+    <div key={i} className="relative group">
 
+   <Link
+  to={menu.submenu[0].href.split("#")[0]} 
+  className="px-3 py-2 rounded-lg text-sm font-medium text-primary-foreground/70 hover:text-zellige-green"
+>
+  {menu.label}
+</Link>
+
+      <div className="absolute top-full left-0 mt-0 w-64 bg-[#000e2b] border border-white/10 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-200">
+        {menu.submenu.map((sub) => (
+          <HashLink
+            key={sub.href}
+            smooth
+            to={sub.href}
+            className="block px-4 py-2 text-sm text-primary-foreground/70 hover:text-zellige-green hover:bg-zellige-green/5"
+          >
+            {sub.label}
+          </HashLink>
+        ))}
+      </div>
+    </div>
+  ))}
+
+  {/* CTA */}
+  <HashLink
+    smooth
+    to="/evenement#inscription"
+    className="ml-2 px-5 py-2 rounded-lg text-sm font-semibold text-accent-foreground hover:scale-105 transition-all"
+    style={{ background: "var(--gradient-accent)" }}
+  >
+    S'inscrire
+  </HashLink>
+</div>
         {/* Mobile menu button */}
         <button onClick={() => setOpen(!open)} className="lg:hidden text-primary-foreground">
           {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -81,19 +127,24 @@ const Navbar = () => {
             exit={{ opacity: 0, height: 0 }}
             className="lg:hidden bg-zellige-dark/95 backdrop-blur-md border-t border-primary-foreground/10 px-4 py-4 space-y-1 overflow-hidden"
           >
-            {links.map((l) => (
-              <Link
-                key={l.href}
-                to={l.href}
-                className={`block px-3 py-2.5 rounded-lg font-body text-sm font-medium transition-colors ${
-                  location.pathname === l.href
-                    ? "text-zellige-green bg-zellige-green/10"
-                    : "text-primary-foreground/70 hover:text-zellige-green"
-                }`}
-              >
-                {l.label}
-              </Link>
-            ))}
+          {links.map((menu, i) => (
+  <div key={i}>
+    <p className="px-3 py-2 text-sm font-semibold text-zellige-green">
+      {menu.label}
+    </p>
+
+    {menu.submenu.map((sub) => (
+      <HashLink
+        key={sub.href}
+        smooth
+        to={sub.href}
+        className="block pl-6 pr-3 py-2 text-sm text-primary-foreground/70 hover:text-zellige-green"
+      >
+        {sub.label}
+      </HashLink>
+    ))}
+  </div>
+))}
             <Link
               to="/evenement#inscription"
               className="block text-center mt-3 px-5 py-3 rounded-lg text-sm font-body font-semibold text-accent-foreground"

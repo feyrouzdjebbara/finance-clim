@@ -21,7 +21,7 @@ const InfoSection = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-2">
-            Finance <span className="text-secondary">Climatique</span> 
+            Finance <span className="text-primary">Climatique</span> 
           </h2>
            <div className="w-24 h-1 mx-auto rounded-full" style={{ background: "var(--gradient-zellige)" }}></div>
           <p className="mt-4 text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">

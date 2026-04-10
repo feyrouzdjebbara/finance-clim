@@ -98,7 +98,7 @@ const HeroSection = () => {
               to="/evenement#programme"
               className="px-8 py-4 rounded-lg font-body font-semibold border border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 transition-all"
             >
-              Voir le Programme
+              Programme
             </HashLink>
           </motion.div>
         </div>

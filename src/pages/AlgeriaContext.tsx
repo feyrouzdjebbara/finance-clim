@@ -137,11 +137,14 @@ const AlgeriaContext = () => {
                className="text-center mb-12"
              >
                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-2">
-           Contexte <span className="text-zellige-yellow"> Algérien</span>
+           Contexte <span className="text-primary"> Algérien</span>
           </h2>
         
-          <div className="w-24 h-1 mx-auto rounded-full" style={{ background: "var(--gradient-accent)" }} />
-        </motion.div>
+           <div
+            className="w-24 h-1 mx-auto rounded-full"
+            style={{ background: "var(--gradient-zellige)" }}
+          />   
+           </motion.div>
 
 
         <div className="container max-w-7xl mx-auto">

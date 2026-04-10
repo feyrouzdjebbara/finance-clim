@@ -9,10 +9,12 @@ import { Calendar, MapPin } from "lucide-react";
 const Event = () => {
   return (
     <PageLayout>
+
       {/* Hero */}
-      <section className="relative py-32 bg-zellige-dark overflow-hidden">
+      <section className="relative py-32 bg-zellige-dark overflow-hidden" id="event-hero">
         <div className="absolute inset-0 zellige-pattern pointer-events-none" />
-        <div className="absolute inset-0"  style={{ backgroundImage: "url('/images/fond.png')" }} />
+        <div className="absolute inset-0" style={{ backgroundImage: "url('/images/fond.png')" }} />
+
         <div className="container max-w-4xl mx-auto px-4 relative z-10 text-center">
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
@@ -21,6 +23,7 @@ const Event = () => {
           >
             L'Événement <span className="text-zellige-yellow">CFC 2026</span>
           </motion.h1>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -31,6 +34,7 @@ const Event = () => {
               <Calendar className="w-5 h-5 text-zellige-yellow" />
               <span>24 – 25 Juin 2026</span>
             </div>
+
             <div className="flex items-center gap-2">
               <MapPin className="w-5 h-5 text-zellige-green" />
               <span>CIC, Alger</span>
@@ -39,10 +43,26 @@ const Event = () => {
         </div>
       </section>
 
-      <ObjectivesSection />
-      <ProgramSection />
-      {/* <PartnersSection /> */}
-      <RegistrationSection />
+      {/* OBJECTIF */}
+      <section id="objectif">
+        <ObjectivesSection />
+      </section>
+
+      {/* PROGRAMME */}
+      <section id="programme">
+        <ProgramSection />
+      </section>
+
+      {/* PARTNERS (optionnel) */}
+      {/* <section id="partenaires">
+        <PartnersSection />
+      </section> */}
+
+      {/* INSCRIPTION */}
+      <section id="inscription">
+        <RegistrationSection />
+      </section>
+
     </PageLayout>
   );
 };

@@ -1,19 +1,33 @@
 import PageLayout from "@/components/PageLayout";
 import HeroSection from "@/components/HeroSection";
 import PMSection from "@/components/PMSection";
-// import ObjectivesSection from "@/components/ObjectivesSection";
 import AlgeriaContext from "./AlgeriaContext";
 import InfoSection from "@/components/InfoSection";
 
 const Index = () => {
   return (
     <PageLayout>
-      <HeroSection />
-      <PMSection />
+      
+      {/* Hero (optional anchor if needed later) */}
+      <section id="hero">
+        <HeroSection />
+      </section>
+
+      {/* Message du Premier Ministre */}
+      <section id="message-pm">
+        <PMSection />
+      </section>
+
+      {/* Présentation de la finance climatique */}
+      <section id="finance-climatique">
         <InfoSection />
-      {/* <ObjectivesSection /> */}
-      <AlgeriaContext />
-           {/* <MyMap /> */}
+      </section>
+
+      {/* Contexte Algérien */}
+      <section id="contexte-algerie">
+        <AlgeriaContext />
+      </section>
+
     </PageLayout>
   );
 };

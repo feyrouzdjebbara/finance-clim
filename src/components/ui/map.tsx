@@ -188,7 +188,10 @@ const Map = forwardRef<MapRef, MapProps>(function Map(
   const styleTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const internalUpdateRef = useRef(false);
   const resolvedTheme = useResolvedTheme(themeProp);
-
+const algeriaBounds: [[number, number], [number, number]] = [
+  [-8.7, 14],  // SW
+  [12.0, 37.5],  // NE
+];
   const isControlled = viewport !== undefined && onViewportChange !== undefined;
 
   const onViewportChangeRef = useRef(onViewportChange);
@@ -221,9 +224,15 @@ const Map = forwardRef<MapRef, MapProps>(function Map(
     currentStyleRef.current = initialStyle;
 
     const map = new MapLibreGL.Map({
-      container: containerRef.current,
-      style: initialStyle,
-      renderWorldCopies: false,
+
+       container: containerRef.current,
+  style: initialStyle,
+  renderWorldCopies: false,
+  
+  dragRotate: true,
+pitchWithRotate: true,
+touchZoomRotate: true,
+  maxBounds: algeriaBounds,
       attributionControl: {
         compact: true,
       },

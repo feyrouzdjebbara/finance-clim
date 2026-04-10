@@ -138,3 +138,6 @@
   background: hsl(var(--zellige-green));
   border-radius: 4px;
 }
+section {
+  scroll-margin-top: 90px;
+}

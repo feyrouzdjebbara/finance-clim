@@ -43,10 +43,10 @@ const PMSection = () => {
               <div className="mt-6  pl-14">
                 <div className="w-16 h-0.5 bg-zellige-yellow mb-3" />
                 <p className="font-display font-semibold text-foreground">
-                  Le Premier Ministre
+                 Sifi Ghrieb
                 </p>
                 <p className="text-muted-foreground font-body text-sm">
-                  République Algérienne Démocratique et Populaire
+                  Le Premier Ministre
                 </p>
               </div>
             </div>
@@ -54,7 +54,7 @@ const PMSection = () => {
             {/* IMAGE */}
             <div className="flex-shrink-0">
               <img
-                src="/images/sifi.jpeg" // 👉 mets ton image ici
+                src="/images/sifighe.jpeg" // 👉 mets ton image ici
                 alt="Premier Ministre"
                 className="w-80 h-80 md:w-80 md:h-80 object-cover rounded-2xl shadow-md border"
               />

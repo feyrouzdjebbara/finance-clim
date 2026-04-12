@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { BarChart3, Leaf, Globe2, Coins } from "lucide-react";
 
 const stats = [
-  { icon: Globe2, value: "197", label: "Pays signataires de l'Accord" },
+  { icon: Globe2, value: "197", label: "Pays signataires de l'Accord de Paris" },
   { icon: Coins, value: "2B$", label: "Marché volontaire des crédits carbone" },
   { icon: Leaf, value: "50%", label: "Réduction des émissions visée d'ici 2030" },
   { icon: BarChart3, value: "300+", label: "Projets carbone en Afrique" },

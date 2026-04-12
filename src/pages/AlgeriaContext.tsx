@@ -39,11 +39,16 @@ const mapMarkers: MapMarker[] = [
   { id: "e4", type: "renewable", title: "Projet solaire - Béchar", desc: "Projet énergie solaire" },
   { id: "e5", type: "renewable", title: "Projet solaire - Laghouat", desc: "Projet énergie solaire" },
 
-  // Barrages
-  { id: "d1", type: "dam", title: "Barrage de Beni Haroun", desc: "Grand barrage hydraulique d'Algérie" },
-  { id: "d2", type: "dam", title: "Barrage de Jedra", desc: "Barrage situé à Souk Ahras" },
-  { id: "d3", type: "dam", title: "Barrage de Souk Thlatha", desc: "Barrage situé à Tizi Ouzou" },
-  { id: "d4", type: "dam", title: "Barrage - Constantine", desc: "Infrastructure hydraulique stratégique" },
+
+// DAMS (existants)
+  { id: "d2", type: "dam", title: "Beni Haroun", desc: "Plus grand barrage d'Algérie + potentiel énergétique" },
+ 
+  // NEW ENERGY DAMS
+  { id: "d5", type: "dam", title: "Ighil Emda", desc: "Production hydroélectrique réelle" },
+  { id: "d6", type: "dam", title: "Koudiat Acerdoune", desc: "Barrage + petite centrale hydro"},
+ { id: "d9", type: "dam", title: "Taksebt", desc: "Stratégique + potentiel énergétique" },
+
+
 ];
 // ✅ COLORS (you were missing this too)
 // ✅ ICONS PAR MARKER
@@ -55,10 +60,11 @@ const markerIcons: Record<string, typeof MapPin> = {
   e3: Wind,
   e4: Sun,
   e5: Sun,
-  d1: Droplets,
+ 
   d2: Droplets,
-  d3: Droplets,
-  d4: Droplets,
+  d5: Droplets,
+  d6: Droplets,
+   d9: Droplets,
 };
 
 // ✅ COULEURS PAR TYPE

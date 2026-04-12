@@ -36,11 +36,14 @@ const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-zellige-dark">
       {/* Background */}
+       {/* Dark blue overlay */}
+ 
+
       <div
         className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/background.png')" }}
+        style={{ backgroundImage: "url('/images/back4.png')" }}
       />
-
+ {/* <div className="absolute inset-0 bg-blue-950/60" /> */}
       {/* Content */}
       <div className="relative z-10 flex flex-col lg:flex-row items-start px-8 max-w-7xl w-full gap-16">
         {/* Left Text */}
@@ -104,11 +107,11 @@ const HeroSection = () => {
         </div>
 
         {/* Right Floating Images */}
-        <div className="w-full lg:w-1/2 text-left pl-8">
+        {/* <div className="w-full lg:w-1/2 text-left pl-8">
           <div className="hidden lg:block">
             <FloatingImages />
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

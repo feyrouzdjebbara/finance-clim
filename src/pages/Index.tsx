@@ -1,4 +1,5 @@
 import PageLayout from "@/components/PageLayout";
+import HeroSection2 from "@/components/HeroSection2";
 import HeroSection from "@/components/HeroSection";
 import PMSection from "@/components/PMSection";
 import AlgeriaContext from "./AlgeriaContext";
@@ -10,7 +11,8 @@ const Index = () => {
       
       {/* Hero (optional anchor if needed later) */}
       <section id="hero">
-        <HeroSection />
+        {/* <HeroSection2 /> */}
+          <HeroSection/>
       </section>
 
       {/* Message du Premier Ministre */}

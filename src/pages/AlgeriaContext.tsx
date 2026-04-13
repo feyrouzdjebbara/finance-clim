@@ -242,7 +242,7 @@ const AlgeriaContext = () => {
 
             {/* STATS */}
             <div className="p-5 border rounded-xl space-y-2">
-              <h3 className="font-semibold">Algérie</h3>
+              <h3 className="font-sans font-semibold ">L'Algérie en chiffres</h3>
 
               {[
                 { l: "Superficie", v: "2,38 M km²", i: Mountain },
@@ -256,7 +256,7 @@ const AlgeriaContext = () => {
                     <s.i className="w-4 h-4" />
                     {s.l}
                   </div>
-                  <span>{s.v}</span>
+                  <span className="font-semibold">{s.v}</span>
                 </div>
               ))}
             </div>
@@ -265,7 +265,7 @@ const AlgeriaContext = () => {
             <div className="p-5 border rounded-xl bg-red-50">
               <div className="flex items-center gap-2 mb-2">
                 <AlertTriangle className="text-red-500 w-4 h-4" />
-                <span className="font-semibold">Risques Climatiques</span>
+                <span className="font-semibold text-red-500">Risques Climatiques</span>
               </div>
 
               <ul className="text-sm space-y-1">

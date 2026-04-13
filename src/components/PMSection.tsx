@@ -54,7 +54,7 @@ const PMSection = () => {
             {/* IMAGE */}
             <div className="flex-shrink-0">
               <img
-                src="/images/sifighe.jpeg" // 👉 mets ton image ici
+                src="/images/sifi.jpeg" // 👉 mets ton image ici
                 alt="Premier Ministre"
                 className="w-80 h-80 md:w-80 md:h-80 object-cover rounded-2xl shadow-md border"
               />

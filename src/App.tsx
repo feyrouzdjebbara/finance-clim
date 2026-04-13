@@ -19,7 +19,7 @@ const queryClient = new QueryClient();
 const App = () => (
   
   <QueryClientProvider client={queryClient}>
-     <CursorBubble />
+     {/* <CursorBubble /> */}
     <TooltipProvider>
       <Toaster />
       <Sonner />

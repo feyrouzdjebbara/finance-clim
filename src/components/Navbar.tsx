@@ -71,7 +71,7 @@ const Navbar = () => {
     >
       <div className="container max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
         <Link to="/" className="flex items-center gap-2 text-primary-foreground">
-          <img  src="/images/logo.png" className="w-6 h-6 text-zellige-green" />
+          <img  src="/images/SH2.png" className="w-6 h-9 text-zellige-green" />
           <span className="font-display font-bold text-lg">Finance Climatique & Crédits Carbone</span>
         </Link>
 
